@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Container } from "react-bootstrap";
+import NavBar from "./components/NavBar";
+import MoviesList from "./components/MoviesList";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import MovieDetails from "./components/MovieDetails";
+import Footers from './components/Footers'
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div className="font color-body ">
+        <NavBar />
+        <Container>
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<MoviesList />} />
+              <Route path="/movie/:id" element={<MovieDetails />} />
+            </Routes>
+          </BrowserRouter>
+        </Container>
+        <Footers />
+      </div>
+    </>
   );
-}
-
+};
 export default App;
